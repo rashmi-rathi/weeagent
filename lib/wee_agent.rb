@@ -1,0 +1,5 @@
+require "wee_agent/version"
+require "wee_agent/api"
+require "wee_agent/contact"
+require "wee_agent/exception"
+require "wee_agent/invoice_builder"

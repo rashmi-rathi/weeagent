@@ -1,0 +1,120 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.sandbox.freeagent.com/v2/contacts?contact%5Bemail%5D=john@wick.com&contact%5Bfirst_name%5D=John&contact%5Blast_name%5D=Wick&contact%5Borganisation_name%5D=
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Authorization:
+      - Bearer 1D_3VbnATNfoHBoULX4Wgxgw4q_qPXMeEJtqofqeg
+      Accept:
+      - application/json
+      User-Agent:
+      - API Testing
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Tue, 15 Mar 2016 13:49:22 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Status:
+      - 201 Created
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      - nosniff
+      Location:
+      - https://api.sandbox.freeagent.com/v2/contacts/32874
+      Etag:
+      - W/"aae12faa082283828a75868c9ea26874"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - e7454c5b-0604-4791-b4ca-2fa698882e8c
+      X-Rev:
+      - 966a5f
+      X-Host:
+      - web1
+      X-Runtime:
+      - '0.105078'
+      Vary:
+      - Origin
+    body:
+      encoding: UTF-8
+      string: '{"contact":{"url":"https://api.sandbox.freeagent.com/v2/contacts/32874","first_name":"John","last_name":"Wick","active_projects_count":0,"created_at":"2016-03-15T13:49:22.724Z","updated_at":"2016-03-15T13:49:22.724Z","email":"john@wick.com","contact_name_on_invoices":true,"country":"United
+        Kingdom","charge_sales_tax":"Auto","locale":"en","account_balance":"0.0","status":"Active","uses_contact_invoice_sequence":false}}'
+    http_version: 
+  recorded_at: Tue, 15 Mar 2016 13:49:22 GMT
+- request:
+    method: post
+    uri: https://api.sandbox.freeagent.com/v2/invoices?invoice%5Bcontact%5D=https://api.sandbox.freeagent.com/v2/contacts/32874&invoice%5Bdated_on%5D=2016-03-15&invoice%5Binvoice_items%5D%5B0%5D%5Bdescription%5D=Accommodation&invoice%5Binvoice_items%5D%5B1%5D%5Bitem_type%5D=Services&invoice%5Binvoice_items%5D%5B2%5D%5Bprice%5D=75&invoice%5Binvoice_items%5D%5B3%5D%5Bquantity%5D=1&invoice%5Bpayment_terms_in_days%5D=30
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Authorization:
+      - Bearer 1D_3VbnATNfoHBoULX4Wgxgw4q_qPXMeEJtqofqeg
+      Accept:
+      - application/json
+      User-Agent:
+      - API Testing
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Tue, 15 Mar 2016 13:49:24 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Status:
+      - 201 Created
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      - nosniff
+      Location:
+      - https://api.sandbox.freeagent.com/v2/invoices/17468
+      Etag:
+      - W/"ed8d377a56168ddbdb36320d2404152c"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - fd7c7c99-1ed0-448d-a06d-80c18bb58d0b
+      X-Rev:
+      - 966a5f
+      X-Host:
+      - web1
+      X-Runtime:
+      - '0.269895'
+      Vary:
+      - Origin
+    body:
+      encoding: UTF-8
+      string: '{"invoice":{"url":"https://api.sandbox.freeagent.com/v2/invoices/17468","contact":"https://api.sandbox.freeagent.com/v2/contacts/32874","dated_on":"2016-03-15","due_on":"2016-04-14","reference":"019","currency":"GBP","exchange_rate":"1.0","net_value":"175.0","involves_sales_tax":false,"is_interim_uk_vat":false,"total_value":"175.0","paid_value":"0.0","due_value":"175.0","status":"Draft","omit_header":false,"always_show_bic_and_iban":false,"payment_terms_in_days":30,"created_at":"2016-03-15T13:49:24.752Z","updated_at":"2016-03-15T13:49:24.772Z","send_new_invoice_emails":false,"send_reminder_emails":false,"send_thank_you_emails":false,"bank_account":"https://api.sandbox.freeagent.com/v2/bank_accounts/1676","invoice_items":[{"url":"https://api.sandbox.freeagent.com/v2/invoice_items/32916","position":1,"description":"Test","item_type":"Training","price":"100.0","quantity":"1.0","category":"https://api.sandbox.freeagent.com/v2/categories/001"},{"url":"https://api.sandbox.freeagent.com/v2/invoice_items/32917","position":2,"description":"Accommodation","item_type":"Services","price":"75.0","quantity":"1.0","category":"https://api.sandbox.freeagent.com/v2/categories/001"}]}}'
+    http_version: 
+  recorded_at: Tue, 15 Mar 2016 13:49:24 GMT
+recorded_with: VCR 2.9.3

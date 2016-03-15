@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'weeagent/version'
+require 'wee_agent/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "weeagent"
-  spec.version       = Weeagent::VERSION
+  spec.name          = "wee_agent"
+  spec.version       = WeeAgent::VERSION
   spec.authors       = ["Dan Garland"]
   spec.email         = ["dan@dangarland.co.uk"]
 
@@ -30,4 +30,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "bundler", "~> 1.11"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec"
+  spec.add_development_dependency "vcr"
 end
