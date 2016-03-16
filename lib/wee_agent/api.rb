@@ -2,6 +2,8 @@ require 'httparty'
 
 module WeeAgent
   class API
+    attr_reader :url
+
     def initialize(access_token: , environment: :development)
       @access_token = access_token
       @environment = environment
@@ -22,7 +24,6 @@ module WeeAgent
         'User-Agent' => 'API Testing'
       }
     end
-
 
     def free_agent_url
       if @environment.eql?(:live) || @environment.eql?(:production)
