@@ -9,9 +9,9 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Dan Garland"]
   spec.email         = ["dan@dangarland.co.uk"]
 
-  spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = "A small (wee) wrapper around the FreeAgent API"
+  spec.description   = "A small (wee) wrapper around the FreeAgent API"
+  spec.homepage      = "https://github.com/wegotcoders/weeagent"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org by setting 'allowed_push_host', or
