@@ -4,19 +4,17 @@ module WeeAgent
       request(verb: :post, path: 'invoices', query: build_invoice(contact_free_agent_url, items))
     end
 
-    def invoices
-      HTTParty.get("#{@url}/invoices", headers: headers)
+    def all
+      request(verb: :get, path: 'invoices')
     end
 
     def get_invoice(invoice_id)
-      HTTParty.get("#{@url}/invoices/#{invoice_id}", headers: headers)
+      request(verb: :get, path: "#{@url}/invoices/#{invoice_id}")
     end
 
     def email(invoice_id:, to:, from:, body: '', subject: '', email_to_sender: false)
       query = build_email_query(to: to, from: from, body: body, subject: subject, email_to_sender: email_to_sender)
-      response = request(verb: :post, path: "invoices/#{invoice_id}/send_email", body: query)
-      return unless response
-      response.code.eql?(200) ? true : false
+      request(verb: :post, path: "invoices/#{invoice_id}/send_email", body: query)
     end
 
     private
