@@ -15,6 +15,14 @@ module WeeAgent
       HTTParty.send(verb, free_agent_url, { query: query, body: body, headers: headers })
     end
 
+    def contact
+      @contact ||= Contact.new(access_token: @access_token, environment: @environment)
+    end
+
+    def invoice
+      @invoice ||= Invoice.new(access_token: @access_token, environment: @environment)
+    end
+
     private
 
     def headers
