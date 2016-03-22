@@ -1,7 +1,27 @@
 module WeeAgent
   class Invoice < API
-    def create(contact_free_agent_url, items)
-      request(verb: :post, path: 'invoices', query: build_invoice(contact_free_agent_url, items))
+    attr_reader :free_agent_id
+
+    #items = [
+    #  {
+    #    :description => "SEO Training and Workshop",
+    #    :item_type => "Training",
+    #    :price => 800, #    :quantity => 1 #  },
+    #  {:description => "Accommodation",
+    #   :item_type => "Services",
+    #   :price => 75,
+    #   :quantity => 1
+    #  }
+    #]
+
+    def create(contact_id, items)
+      response = request(verb: :post, path: 'invoices', query: build_invoice(contact_url(contact_id), items))
+
+      if response['errors']
+        raise Exception.new(response['errors'].first['message'])
+      else
+        response
+      end
     end
 
     def all

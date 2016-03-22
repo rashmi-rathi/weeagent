@@ -8,7 +8,7 @@ module WeeAgent
       )
 
       return if response.nil? || response.blank?
-      response['contact']['url'].split('/').last
+      response
     end
 
     private

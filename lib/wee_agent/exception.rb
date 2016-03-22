@@ -1,4 +1,4 @@
 module WeeAgent
-  class Exception < ::Exception
+  class Exception < StandardError
   end
 end
