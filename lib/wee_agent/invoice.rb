@@ -14,8 +14,17 @@ module WeeAgent
     #  }
     #]
 
-    def create(contact_id, items)
-      response = request(verb: :post, path: 'invoices', query: build_invoice(contact_url(contact_id), items))
+    def create(contact_id:, dated_on:, payment_terms_in_days:, items:)
+      response = request(
+        verb: :post,
+        path: 'invoices',
+        query: build_invoice(
+          contact_id,
+          payment_terms_in_days,
+          dated_on,
+          items
+        )
+      )
 
       if response['errors']
         raise Exception.new(response['errors'].first['message'])
@@ -43,12 +52,12 @@ module WeeAgent
       "#{@url}/contacts/#{contact_id}"
     end
 
-    def build_invoice(contact_id, items)
+    def build_invoice(contact_id, payment_terms_in_days, dated_on, items)
       {
         :invoice => {
           :contact => contact_url(contact_id),
-          :payment_terms_in_days => 30,
-          :dated_on => Date.today.to_s,
+          :payment_terms_in_days => payment_terms_in_days,
+          :dated_on => dated_on,
           :invoice_items => items
         }
       }

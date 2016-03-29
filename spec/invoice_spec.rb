@@ -20,7 +20,7 @@ describe WeeAgent::Invoice do
         }
       )
 
-      @invoice.create(1, [])
+      @invoice.create(contact_id: 1, dated_on: Date.today.to_s, payment_terms_in_days: 30, items: [])
     end
   end
 
