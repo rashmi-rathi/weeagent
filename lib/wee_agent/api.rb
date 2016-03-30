@@ -10,6 +10,13 @@ module WeeAgent
       @url = free_agent_url
     end
 
+    def handle_response(response)
+      return unless response
+      return response if response.code.eql?(200)
+      raise Exception.new(response['errors']['error']['message']) if response['errors']
+      response
+    end
+
     def request(verb:, path:, query: {}, body: {})
       free_agent_url = "#{@url}/#{path}"
       HTTParty.send(verb, free_agent_url, { query: query, body: body, headers: headers })

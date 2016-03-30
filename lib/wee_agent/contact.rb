@@ -6,7 +6,7 @@ module WeeAgent
         path: 'contacts',
         query: contact_query(organisation_name, first_name, last_name, email)
       )
-      response
+      handle_response(response)
     end
 
     private

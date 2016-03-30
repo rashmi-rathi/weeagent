@@ -26,24 +26,23 @@ module WeeAgent
         )
       )
 
-      if response['errors']
-        raise Exception.new(response['errors'].first['message'])
-      else
-        response
-      end
+      handle_response(response)
     end
 
     def all
-      request(verb: :get, path: 'invoices')
+      response = request(verb: :get, path: 'invoices')
+      handle_response(response)
     end
 
     def get_invoice(invoice_id)
-      request(verb: :get, path: "#{@url}/invoices/#{invoice_id}")
+      response = request(verb: :get, path: "#{@url}/invoices/#{invoice_id}")
+      handle_response(response)
     end
 
     def email(invoice_id:, to:, from:, body: '', subject: '', email_to_sender: false)
       query = build_email_query(to: to, from: from, body: body, subject: subject, email_to_sender: email_to_sender)
-      request(verb: :post, path: "invoices/#{invoice_id}/send_email", body: query)
+      response = request(verb: :post, path: "invoices/#{invoice_id}/send_email", body: query)
+      handle_response(response)
     end
 
     private

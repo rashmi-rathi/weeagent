@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe WeeAgent::Invoice do
   before do
-    @invoice = WeeAgent::Invoice.new(access_token: 'test_acces_token')
+    @invoice = WeeAgent::Invoice.new(access_token: 'test_access_token')
   end
 
   describe '.create' do
@@ -43,6 +43,16 @@ describe WeeAgent::Invoice do
       )
 
       @invoice.email(invoice_id: 1, to: 'john@wick.com', body: 'test body', from: 'john@wick.com', subject: 'test subject')
+    end
+
+    it 'raises an exception if the response has errors' do
+      body = {"errors"=>{"error"=>{"message"=>"Access token not recognised"}}}.to_json
+      stub_request(:post, "https://api.sandbox.freeagent.com/v2/invoices/1/send_email").with(:body => "invoice[email][to]=test%40test.com&invoice[email][from]=test%40test.com&invoice[email][body]=&invoice[email][subject]=&invoice[email][email_to_sender]=false", :headers => {'Accept'=>'application/json', 'Authorization'=>'Bearer test_access_token', 'User-Agent'=>'API Testing'}).to_return(:status => 401, :body => body, :headers => {})
+
+      expect {
+
+        @invoice.email(invoice_id: 1, to: 'test@test.com', from: 'test@test.com')
+      }.to raise_error( WeeAgent::Exception )
     end
   end
 end
