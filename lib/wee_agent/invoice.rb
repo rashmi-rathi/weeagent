@@ -2,18 +2,6 @@ module WeeAgent
   class Invoice < API
     attr_reader :free_agent_id
 
-    #items = [
-    #  {
-    #    :description => "SEO Training and Workshop",
-    #    :item_type => "Training",
-    #    :price => 800, #    :quantity => 1 #  },
-    #  {:description => "Accommodation",
-    #   :item_type => "Services",
-    #   :price => 75,
-    #   :quantity => 1
-    #  }
-    #]
-
     def create(contact_id:, dated_on:, payment_terms_in_days:, items:)
       response = request(
         verb: :post,
